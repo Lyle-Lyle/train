@@ -1,0 +1,25 @@
+server:
+  port: 8001
+  servlet:
+    context-path: /member
+
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/train_member?characterEncoding=UTF8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    username: train_member
+    password: Lykin172855.
+
+#mybatis-plus:
+#  mapper-locations: classpath:/mapper/**/*.xml
+logging:
+  level:
+    com:
+      lyle:
+        train:
+          member: trace
+
+
+

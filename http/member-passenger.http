@@ -1,0 +1,38 @@
+###
+POST http://localhost:8000/member/passenger/save
+Content-Type: application/json
+token: {{token}}
+
+{
+  "id":1628627322414436352,
+  "memberId": 1624581077500825600,
+  "name": "lyle",
+  "idCard": "2263400693",
+  "type": "2"
+}
+
+###
+
+GET http://localhost:8000/member/passenger/query-list
+Accept: application/json
+token: {{token}}
+
+
+###
+
+GET http://localhost:8000/member/passenger/query-list?page=1&size=2
+Accept: application/json
+token: {{token}}
+
+
+
+###
+
+DELETE http://localhost:8000/member/passenger/delete/1628627401883914240
+Accept: application/json
+token: {{token}}
+
+
+
+
+
