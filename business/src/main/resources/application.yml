@@ -19,7 +19,7 @@ logging:
     com:
       lyle:
         train:
-          member: trace
+          business: trace
 
 
 

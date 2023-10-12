@@ -3,9 +3,12 @@ package com.lyle.train.business.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.ObjectUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lyle.train.business.domain.Train;
 import com.lyle.train.business.mapper.StationMapper;
+import com.lyle.train.business.resp.TrainQueryResp;
 import com.lyle.train.common.resp.PageResp;
 import com.lyle.train.common.util.SnowUtil;
 import com.lyle.train.business.domain.Station;
@@ -59,6 +62,15 @@ public class StationService {
         pageResp.setList(list);
         return pageResp;
     }
+
+    public List<StationQueryResp> queryAll() {
+        QueryWrapper<Station> wrapper=new QueryWrapper<>();
+        //时间升序排序
+        wrapper.orderByAsc( "name");
+        List<Station> stationList = stationMapper.selectList(wrapper);
+        return BeanUtil.copyToList(stationList, StationQueryResp.class);
+    }
+
 
     public void delete(Long id) {
         stationMapper.deleteById(id);

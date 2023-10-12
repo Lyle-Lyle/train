@@ -1,5 +1,6 @@
 package com.lyle.train.business.controller.admin;
 
+import com.lyle.train.business.resp.TrainQueryResp;
 import com.lyle.train.common.context.LoginMemberContext;
 import com.lyle.train.common.resp.CommonResp;
 import com.lyle.train.common.resp.PageResp;
@@ -10,6 +11,8 @@ import com.lyle.train.business.service.StationService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin/station")
@@ -30,8 +33,14 @@ public class StationAdminController {
         return new CommonResp<>(list);
     }
 
+    @GetMapping("/query-all")
+    public CommonResp<List<StationQueryResp>> queryAll() {
+        List<StationQueryResp> list = stationService.queryAll();
+        return new CommonResp<>(list);
+    }
+
     @DeleteMapping("/delete/{id}")
-    public CommonResp<Object> delete(@PathVariable Long id) {
+    public CommonResp<Object> delete(@PathVariable long id) {
         stationService.delete(id);
         return new CommonResp<>();
     }

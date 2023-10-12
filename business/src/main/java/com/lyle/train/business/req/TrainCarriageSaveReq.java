@@ -2,14 +2,14 @@ package com.lyle.train.business.req;
 
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import java.math.BigDecimal;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+
 @Data
-public class TrainStationSaveReq {
+public class TrainCarriageSaveReq {
 
     /**
      * id
@@ -23,48 +23,47 @@ public class TrainStationSaveReq {
     private String trainCode;
 
     /**
-     * 站序
+     * 箱号
      */
-    @NotNull(message = "【站序】不能为空")
-    private Integer stationIndex;
+    @NotNull(message = "【箱号】不能为空")
+    private Integer carIndex;
 
     /**
-     * 站名
+     * 座位类型|枚举[SeatTypeEnum]
      */
-    @NotBlank(message = "【站名】不能为空")
-    private String name;
-
-
-    /**
-     * 进站时间
-     */
-    @JsonFormat(pattern = "HH:mm:ss",timezone = "GMT-4")
-    private Date arrival;
+    @NotBlank(message = "【座位类型】不能为空")
+    private String seatType;
 
     /**
-     * 出站时间
+     * 座位数
      */
-    @JsonFormat(pattern = "HH:mm:ss",timezone = "GMT-4")
-    private Date departure;
+    @NotNull(message = "【座位数】不能为空")
+    private Integer seatCount;
 
     /**
-     * 里程（公里）|从上一站到本站的距离
+     * 排数
      */
-    @NotNull(message = "【里程（公里）】不能为空")
-    private BigDecimal km;
+    @NotNull(message = "【排数】不能为空")
+    private Integer rowCount;
+
+    /**
+     * 列数
+     */
+    @NotNull(message = "【列数】不能为空")
+    private Integer colCount;
 
     /**
      * 新增时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-4")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
-
 
     /**
      * 修改时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-4")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateTime;
+
 
     @Override
     public String toString() {
@@ -74,11 +73,11 @@ public class TrainStationSaveReq {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", trainCode=").append(trainCode);
-        sb.append(", stationIndex=").append(stationIndex);
-        sb.append(", name=").append(name);
-        sb.append(", arrival=").append(arrival);
-        sb.append(", departure=").append(departure);
-        sb.append(", km=").append(km);
+        sb.append(", carIndex=").append(carIndex);
+        sb.append(", seatType=").append(seatType);
+        sb.append(", seatCount=").append(seatCount);
+        sb.append(", rowCount=").append(rowCount);
+        sb.append(", colCount=").append(colCount);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append("]");

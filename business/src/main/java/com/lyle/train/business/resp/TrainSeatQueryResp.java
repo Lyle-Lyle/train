@@ -6,10 +6,8 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 @Data
-public class TrainStationQueryResp {
+public class TrainSeatQueryResp {
 
     /**
      * id
@@ -23,45 +21,42 @@ public class TrainStationQueryResp {
     private String trainCode;
 
     /**
-     * 站序
+     * 厢序
      */
-    private Integer stationIndex;
+    private Integer carIndex;
 
     /**
-     * 站名
+     * 排号|01, 02
      */
-    private String name;
-
+    private String rowNum;
 
     /**
-     * 进站时间
+     * 列号|枚举[SeatColEnum]
      */
-    @JsonFormat(pattern = "HH:mm:ss",timezone = "GMT-4")
-    private Date arrival;
+    private String colNum;
 
     /**
-     * 出站时间
+     * 座位类型|枚举[SeatTypeEnum]
      */
-    @JsonFormat(pattern = "HH:mm:ss",timezone = "GMT-4")
-    private Date departure;
-
+    private String seatType;
 
     /**
-     * 里程（公里）|从上一站到本站的距离
+     * 同车厢座序
      */
-    private BigDecimal km;
+    private Integer carriageSeatIndex;
 
     /**
      * 新增时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-4")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
 
     /**
      * 修改时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-4")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateTime;
+
 
     @Override
     public String toString() {
@@ -71,11 +66,11 @@ public class TrainStationQueryResp {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", trainCode=").append(trainCode);
-        sb.append(", stationIndex=").append(stationIndex);
-        sb.append(", name=").append(name);
-        sb.append(", arrival=").append(arrival);
-        sb.append(", departure=").append(departure);
-        sb.append(", km=").append(km);
+        sb.append(", carIndex=").append(carIndex);
+        sb.append(", rowNum=").append(rowNum);
+        sb.append(", colNum=").append(colNum);
+        sb.append(", seatType=").append(seatType);
+        sb.append(", carriageSeatIndex=").append(carriageSeatIndex);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append("]");

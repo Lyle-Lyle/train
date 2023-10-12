@@ -2,29 +2,27 @@ package com.lyle.train.business.domain;
 
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-public class TrainStation {
+public class TrainCarriage {
     private Long id;
 
     private String trainCode;
 
-    private Integer stationIndex;
+    private Integer carIndex;
 
-    private String name;
+    private String seatType;
 
-    private Date arrival;
+    private Integer seatCount;
 
-    private Date departure;
+    private Integer rowCount;
 
-    private BigDecimal km;
+    private Integer colCount;
 
     private Date createTime;
 
     private Date updateTime;
-
 
     @Override
     public String toString() {
@@ -34,11 +32,11 @@ public class TrainStation {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", trainCode=").append(trainCode);
-        sb.append(", stationIndex=").append(stationIndex);
-        sb.append(", name=").append(name);
-        sb.append(", arrival=").append(arrival);
-        sb.append(", departure=").append(departure);
-        sb.append(", km=").append(km);
+        sb.append(", carIndex=").append(carIndex);
+        sb.append(", seatType=").append(seatType);
+        sb.append(", seatCount=").append(seatCount);
+        sb.append(", rowCount=").append(rowCount);
+        sb.append(", colCount=").append(colCount);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append("]");

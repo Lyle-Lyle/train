@@ -1,4 +1,20 @@
-GET http://localhost:8000/business/admin/station/query-list?page=1&size=2
+###
+GET http://localhost:8000/business/admin/train/query-list?page=1&size=2
 Accept: application/json
+
+###
+
+POST http://localhost:8000/business/admin/train/save
+Content-Type: application/json
+
+{
+  "code": "G303",
+  "type": "G",
+  "name": "lyle",
+  "origin": "beijin",
+  "destination": "tiantian",
+  "departure": "12:01:11",
+  "arrival": "12:22:22"
+}
 
 ###
