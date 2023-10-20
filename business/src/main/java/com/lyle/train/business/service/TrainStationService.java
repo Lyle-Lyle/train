@@ -6,12 +6,10 @@ import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lyle.train.business.domain.Train;
 import com.lyle.train.business.mapper.TrainStationMapper;
-import com.lyle.train.business.resp.TrainQueryResp;
+import com.lyle.train.business.domain.TrainStation;
 import com.lyle.train.common.resp.PageResp;
 import com.lyle.train.common.util.SnowUtil;
-import com.lyle.train.business.domain.TrainStation;
 import com.lyle.train.business.req.TrainStationQueryReq;
 import com.lyle.train.business.req.TrainStationSaveReq;
 import com.lyle.train.business.resp.TrainStationQueryResp;
@@ -72,5 +70,12 @@ public class TrainStationService {
 
     public void delete(Long id) {
         trainStationMapper.deleteById(id);
+    }
+
+    public List<TrainStation> selectByTrainCode(String trainCode) {
+        QueryWrapper<TrainStation> wrapper = new QueryWrapper<>();
+        wrapper.orderByAsc("index");
+        wrapper.eq("train_code",trainCode);
+        return trainStationMapper.selectList(wrapper);
     }
 }

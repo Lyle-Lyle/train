@@ -7,12 +7,11 @@ import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lyle.train.business.domain.TrainStation;
-import com.lyle.train.business.resp.TrainStationQueryResp;
-import com.lyle.train.common.resp.PageResp;
-import com.lyle.train.common.util.SnowUtil;
+import com.lyle.train.business.enums.SeatColEnum;
 import com.lyle.train.business.domain.TrainCarriage;
 import com.lyle.train.business.mapper.TrainCarriageMapper;
+import com.lyle.train.common.resp.PageResp;
+import com.lyle.train.common.util.SnowUtil;
 import com.lyle.train.business.req.TrainCarriageQueryReq;
 import com.lyle.train.business.req.TrainCarriageSaveReq;
 import com.lyle.train.business.resp.TrainCarriageQueryResp;
@@ -33,6 +32,13 @@ public class TrainCarriageService {
 
     public void save(TrainCarriageSaveReq req) {
         DateTime now = DateTime.now();
+
+        // 自动计算出列数和总座位数
+        List<SeatColEnum> seatColEnums = SeatColEnum.getColsByType(req.getSeatType());
+        req.setColCount(seatColEnums.size());
+        req.setSeatCount(req.getColCount() * req.getRowCount());
+
+
         TrainCarriage trainCarriage = BeanUtil.copyProperties(req, TrainCarriage.class);
         if (ObjectUtil.isNull(trainCarriage.getId())) {
             trainCarriage.setId(SnowUtil.getSnowflakeNextId());

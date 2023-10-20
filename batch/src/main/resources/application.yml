@@ -1,0 +1,28 @@
+server:
+  port: 8002
+  servlet:
+    context-path: /batch
+
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/train_batch?characterEncoding=UTF8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: Lykin172855.
+
+  application:
+      name: batch
+
+#mybatis-plus:
+#  mapper-locations: classpath:/mapper/**/*.xml
+logging:
+  level:
+    com:
+      lyle:
+        train:
+          batch: trace
+
+
+

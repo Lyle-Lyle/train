@@ -4,13 +4,11 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.core.assist.ISqlRunner;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lyle.train.business.domain.TrainCarriage;
 import com.lyle.train.business.enums.SeatColEnum;
-import com.lyle.train.business.resp.TrainCarriageQueryResp;
 import com.lyle.train.common.resp.PageResp;
 import com.lyle.train.common.util.SnowUtil;
 import com.lyle.train.business.domain.TrainSeat;
@@ -118,4 +116,13 @@ public class TrainSeatService {
         }
 
     }
+
+    public List<TrainSeat> selectByTrainCode(String trainCode) {
+        QueryWrapper<TrainSeat> wrapper=new QueryWrapper<>();
+        wrapper.orderByAsc("id");
+        wrapper.eq("train_code",trainCode);
+        return trainSeatMapper.selectList(wrapper);
+    }
+
+
 }

@@ -1,12 +1,11 @@
 package com.lyle.train.business.controller.admin;
 
-import com.lyle.train.common.context.LoginMemberContext;
-import com.lyle.train.common.resp.CommonResp;
-import com.lyle.train.common.resp.PageResp;
-import com.lyle.train.business.req.TrainSeatQueryReq;
 import com.lyle.train.business.req.TrainSeatSaveReq;
 import com.lyle.train.business.resp.TrainSeatQueryResp;
 import com.lyle.train.business.service.TrainSeatService;
+import com.lyle.train.common.resp.CommonResp;
+import com.lyle.train.common.resp.PageResp;
+import com.lyle.train.business.req.TrainSeatQueryReq;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;

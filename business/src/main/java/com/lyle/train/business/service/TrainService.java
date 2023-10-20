@@ -6,13 +6,11 @@ import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lyle.train.business.domain.Station;
-import com.lyle.train.business.resp.StationQueryResp;
+import com.lyle.train.business.req.TrainQueryReq;
 import com.lyle.train.common.resp.PageResp;
 import com.lyle.train.common.util.SnowUtil;
 import com.lyle.train.business.domain.Train;
 import com.lyle.train.business.mapper.TrainMapper;
-import com.lyle.train.business.req.TrainQueryReq;
 import com.lyle.train.business.req.TrainSaveReq;
 import com.lyle.train.business.resp.TrainQueryResp;
 import jakarta.annotation.Resource;
@@ -62,11 +60,18 @@ public class TrainService {
     }
 
     public List<TrainQueryResp> queryAll() {
+//        QueryWrapper<Train> wrapper=new QueryWrapper<>();
+//        //时间升序排序
+//        wrapper.orderByDesc("code");
+//        List<Train> trainList = trainMapper.selectList(wrapper);
+        return BeanUtil.copyToList(selectAll(), TrainQueryResp.class);
+    }
+
+    public List<Train> selectAll() {
         QueryWrapper<Train> wrapper=new QueryWrapper<>();
         //时间升序排序
         wrapper.orderByDesc("code");
-        List<Train> trainList = trainMapper.selectList(wrapper);
-        return BeanUtil.copyToList(trainList, TrainQueryResp.class);
+        return trainMapper.selectList(wrapper);
     }
 
     public void delete(Long id) {
